@@ -6,9 +6,9 @@ app = FastAPI()
 
 # Configuración de CORS
 origins = [
+    "https://innovation-lab-0mny.onrender.com",
     "http://localhost:5173",  # Tu frontend en desarrollo
     "http://127.0.0.1:5173",  # Alternativa si usas 127.0.0.1
-    "https://innovation-lab-0mny.onrender.com/",
 ]
 
 app.add_middleware(
