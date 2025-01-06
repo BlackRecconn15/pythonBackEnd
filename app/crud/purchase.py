@@ -1,28 +1,23 @@
 from sqlalchemy.orm import Session
-from ..models.purchase import Purchase, PurchaseItem
-from ..schemas.purchase import PurchaseCreate
+from ..models.product import Product
+from ..schemas.product import ProductCreate
 
-def create_purchase(db: Session, purchase: PurchaseCreate):
-    db_purchase = Purchase(
-        user_id=purchase.user_id,
-        total=purchase.total,
-        shipping_address=purchase.shipping_address,
-        city=purchase.city,
-        state=purchase.state,
-        postal_code=purchase.postal_code,
+
+def get_products(db: Session, skip: int = 0, limit: int = 10):
+    return db.query(Product).offset(skip).limit(limit).all()
+
+
+def create_product(db: Session, product: ProductCreate):
+    db_product = Product(
+        name=product.name,
+        sku=product.sku,
+        description=product.description,
+        price=product.price,
+        stock=product.stock,
+        shippingCost=product.shippingCost,
+        image_url=product.image_url,  # Agrega la URL de la imagen
     )
-    db.add(db_purchase)
+    db.add(db_product)
     db.commit()
-    db.refresh(db_purchase)
-
-    for item in purchase.items:
-        db_item = PurchaseItem(
-            purchase_id=db_purchase.id,
-            product_id=item.product_id,
-            quantity=item.quantity,
-            price=item.price,
-        )
-        db.add(db_item)
-
-    db.commit()
-    return db_purchase
+    db.refresh(db_product)
+    return db_product

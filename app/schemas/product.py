@@ -7,6 +7,7 @@ class ProductBase(BaseModel):
     price: float
     stock: int
     shippingCost: int
+    image_url: str | None  # Campo opcional
 
 class ProductCreate(ProductBase):
     pass

@@ -11,3 +11,4 @@ class Product(Base):
     price = Column(Float)
     stock = Column(Integer)
     shippingCost = Column(Integer)
+    image_url = Column(String, nullable=True)  # Campo para la URL de la imagen
