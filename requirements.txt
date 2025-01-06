@@ -4,3 +4,7 @@ sqlalchemy
 psycopg2-binary
 python-jose
 passlib
+python-dotenv
+pydantic[email]
+bcrypt
+PyJWT
