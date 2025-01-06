@@ -8,7 +8,9 @@ class Product(Base):
     name = Column(String, index=True)
     sku = Column(String, unique=True, index=True)
     description = Column(String)
-    price = Column(Float)
+    originalPrice = Column(Integer)
+    finalprice = Column(Integer, nullable=True)
     stock = Column(Integer)
     shippingCost = Column(Integer)
     image_url = Column(String, nullable=True)  # Campo para la URL de la imagen
+    rating = Column(String)

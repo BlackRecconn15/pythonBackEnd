@@ -24,4 +24,4 @@ app.include_router(users.router, prefix="/users", tags=["Users"])
 app.include_router(products.router, prefix="/products", tags=["Products"])
 app.include_router(purchases.router, prefix="/purchases", tags=["Purchases"])
 
-#print("Rutas registradas:", app.openapi().get("paths"))  # Depuración
+print("Rutas registradas:", app.openapi().get("paths"))  # Depuración

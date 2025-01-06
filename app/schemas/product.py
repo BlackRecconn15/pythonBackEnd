@@ -4,10 +4,12 @@ class ProductBase(BaseModel):
     name: str
     sku: str
     description: str
-    price: float
+    originalPrice: int
+    finalprice: int | None
     stock: int
     shippingCost: int
     image_url: str | None  # Campo opcional
+    rating: str
 
 class ProductCreate(ProductBase):
     pass
